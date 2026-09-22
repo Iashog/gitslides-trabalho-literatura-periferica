@@ -1,67 +1,115 @@
-<!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Os Supridores — carrossel</title>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>José Falero — Os Supridores</title>
 <style>
-:root{--stage-bg:#2d2d2d;--slide-bg:#f5f3ee;--ink:#1a1a1a;--muted:#6b6760;--accent:#c41e3a;--paper:#faf9f7}
-*{box-sizing:border-box} html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--stage-bg);font-family:Georgia,'Times New Roman',serif;color:var(--ink)}
-.deck-viewport{position:fixed;inset:0;overflow:hidden;background:var(--stage-bg)}.deck-stage{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;transform-origin:0 0;background:var(--slide-bg)}.slide{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;visibility:hidden;opacity:0;pointer-events:none;background:var(--slide-bg)}.slide.active,.slide.visible{visibility:visible;opacity:1;pointer-events:auto;z-index:1}img{max-width:100%;max-height:100%}.deck-controls{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:1000}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}}
-.slide::before{content:"";position:absolute;inset:48px;border:2px solid #e3ded2}.slide::after{content:"";position:absolute;width:420px;height:420px;border:3px solid var(--accent);border-radius:50%;right:28px;top:28px;opacity:.16}.paper{position:absolute;inset:88px 110px;background:var(--paper);box-shadow:0 10px 40px rgba(0,0,0,.12);padding:72px}.paper::before{content:"";position:absolute;left:42px;top:54px;bottom:54px;width:3px;background:var(--accent)}.meta{font-family:Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;font-size:22px;color:var(--muted);margin-left:32px}.grid{display:grid;grid-template-columns:860px 1fr;gap:72px;height:780px;align-items:center}.imagebox{height:690px;margin:0;border:1px solid #ded8cb;background:#fff;display:flex;align-items:center;justify-content:center;padding:28px;overflow:hidden}.imagebox img{width:100%;height:100%;object-fit:contain;filter:saturate(.95) contrast(1.02)}.copy{align-self:center}.kicker{font-family:Arial,sans-serif;font-size:30px;line-height:1.35;color:var(--muted);margin:0 0 36px}.copy h1{font-size:78px;line-height:.98;margin:0 0 42px;letter-spacing:-.035em;font-weight:700}.caption{font-family:Arial,sans-serif;font-size:24px;line-height:1.35;color:var(--muted)}a{color:var(--accent);text-decoration:none}.controls{position:fixed;z-index:9;left:50%;bottom:24px;transform:translateX(-50%);display:flex;gap:10px;align-items:center;background:rgba(45,45,45,.88);padding:10px 14px;border-radius:999px;font-family:Arial,sans-serif}.controls button{width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:#1a1a1a;font-size:24px;cursor:pointer}.counter{color:#fff;font-size:16px;min-width:58px;text-align:center}@media(max-width:800px){.controls{bottom:12px}}
-</style></head><body><div class="deck-viewport"><main class="deck-stage" id="deckStage">
-<section class="slide active visible">
-  <div class="paper">
-    <div class="meta">01 / 4 · José Falero · Os Supridores</div>
-    <div class="grid">
-      <figure class="imagebox"><img src="https://celulapop.com.br/wp-content/uploads/2021/03/514JQlbGc0L.jpg" alt="Capa de Os Supridores"></figure>
-      <div class="copy">
-        <p class="kicker">Bombons, mercado e propriedade do valor produzido pelo trabalho.</p>
-        <h1>Capa de Os Supridores</h1>
-        <p class="caption">Fonte: <a href="https://celulapop.com.br/os-supridores-a-literatura-pra-quem-e-de-verdade/" target="_blank" rel="noopener">Célula POP</a></p>
-      </div>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#fff; color:#37352f; }
+  .slider { display:flex; flex-direction:column; width:100%; height:100%; }
+  .stage { position:relative; flex:1 1 auto; min-height:0; background:#f7f6f3; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+  .stage img { max-width:100%; max-height:100%; object-fit:contain; display:none; }
+  .stage img.active { display:block; }
+  .spinner { position:absolute; width:28px; height:28px; border:3px solid #d3d1cb; border-top-color:#37352f; border-radius:50%; animation:spin 0.8s linear infinite; display:none; }
+  .stage.loading .spinner { display:block; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .caption { position:absolute; bottom:0; left:0; right:0; background:rgba(255,255,255,0.92); font-size:12px; padding:6px 10px; color:#37352f; }
+  .nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.85); border:1px solid #e9e8e4; border-radius:50%; width:36px; height:36px; cursor:pointer; font-size:18px; line-height:1; color:#37352f; z-index:2; }
+  .nav:hover { background:#fff; }
+  .prev { left:10px; } .next { right:10px; }
+  .dots { flex:0 0 auto; display:flex; justify-content:center; gap:6px; padding:8px 0; background:#fff; }
+  .dot { width:8px; height:8px; border-radius:50%; background:#d3d1cb; cursor:pointer; }
+  .dot.active { background:#37352f; }
+</style>
+</head>
+<body>
+  <div class="slider">
+    <div class="stage" id="stage">
+      <div class="spinner"></div>
+      <button class="nav prev" id="prev" aria-label="Imagem anterior">‹</button>
+      <button class="nav next" id="next" aria-label="Próxima imagem">›</button>
+      <div class="caption" id="cap"></div>
     </div>
+    <div class="dots" id="dots"></div>
   </div>
-</section>
-
-<section class="slide ">
-  <div class="paper">
-    <div class="meta">02 / 4 · José Falero · Os Supridores</div>
-    <div class="grid">
-      <figure class="imagebox"><img src="https://i.ytimg.com/vi/x9197fEp0HY/maxresdefault.jpg" alt="Lançamento de Os Supridores"></figure>
-      <div class="copy">
-        <p class="kicker">Bombons, mercado e propriedade do valor produzido pelo trabalho.</p>
-        <h1>Lançamento de Os Supridores</h1>
-        <p class="caption">Fonte: <a href="https://www.youtube.com/watch?v=x9197fEp0HY" target="_blank" rel="noopener">Todavia ao vivo / YouTube</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="slide ">
-  <div class="paper">
-    <div class="meta">03 / 4 · José Falero · Os Supridores</div>
-    <div class="grid">
-      <figure class="imagebox"><img src="https://s.rfi.fr/media/display/2067e6de-32a0-11ed-af72-005056a97e36/w:1280/p:16x9/Por%20Josemar%20Afrovulto.jpg" alt="José Falero em entrevista sobre a edição francesa"></figure>
-      <div class="copy">
-        <p class="kicker">Bombons, mercado e propriedade do valor produzido pelo trabalho.</p>
-        <h1>José Falero em entrevista sobre a edição francesa</h1>
-        <p class="caption">Fonte: <a href="https://www.rfi.fr/br/podcasts/rfi-convida/20221005-os-supridores-de-jos%C3%A9-falero-%C3%A9-%C3%BAnico-brasileiro-da-rentr%C3%A9e-liter%C3%A1ria-francesa-2022" target="_blank" rel="noopener">RFI</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="slide ">
-  <div class="paper">
-    <div class="meta">04 / 4 · José Falero · Os Supridores</div>
-    <div class="grid">
-      <figure class="imagebox"><img src="https://revistaopera.operamundi.uol.com.br/wp-content/uploads/2021/08/pera-16.jpeg" alt="José Falero, ex-supridor e escritor"></figure>
-      <div class="copy">
-        <p class="kicker">Bombons, mercado e propriedade do valor produzido pelo trabalho.</p>
-        <h1>José Falero, ex-supridor e escritor</h1>
-        <p class="caption">Fonte: <a href="https://revistaopera.operamundi.uol.com.br/2021/08/23/jose-falero-o-ex-supridor-de-supermercado-que-se-tornou-o-escritor-mais-discutido-do-brasil/" target="_blank" rel="noopener">Revista Opera</a></p>
-      </div>
-    </div>
-  </div>
-</section></main></div><nav class="controls" aria-label="Navegação dos slides"><button id="prev" aria-label="Slide anterior">‹</button><span class="counter" id="counter">1/4</span><button id="next" aria-label="Próximo slide">›</button></nav>
 <script>
-class SlidePresentation{constructor(){this.slides=[...document.querySelectorAll('.slide')];this.i=0;this.stage=document.getElementById('deckStage');this.counter=document.getElementById('counter');this.scale();addEventListener('resize',()=>this.scale());document.getElementById('prev').onclick=()=>this.go(this.i-1);document.getElementById('next').onclick=()=>this.go(this.i+1);document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();this.go(this.i+1)} if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();this.go(this.i-1)}});let sx=0;document.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>60)this.go(this.i+(dx<0?1:-1))},{passive:true});const start=new URLSearchParams(location.search).get('slide');this.go(start?Number(start)-1:0)}scale(){const f=Math.min(innerWidth/1920,innerHeight/1080);const x=(innerWidth-1920*f)/2;const y=(innerHeight-1080*f)/2;this.stage.style.transform=`translate(${x}px,${y}px) scale(${f})`}go(n){this.i=(n+this.slides.length)%this.slides.length;this.slides.forEach((s,k)=>{s.classList.toggle('active',k===this.i);s.classList.toggle('visible',k===this.i)});this.counter.textContent=(this.i+1)+'/'+this.slides.length}}
-new SlidePresentation();
-</script></body></html>
+  const images = [
+    {
+        "src": "https://celulapop.com.br/wp-content/uploads/2021/03/514JQlbGc0L.jpg",
+        "caption": "Capa de Os Supridores, de José Falero — Fonte: Célula POP"
+    },
+    {
+        "src": "https://i.ytimg.com/vi/x9197fEp0HY/maxresdefault.jpg",
+        "caption": "Lançamento de Os Supridores — Fonte: Todavia ao vivo / YouTube"
+    },
+    {
+        "src": "https://s.rfi.fr/media/display/2067e6de-32a0-11ed-af72-005056a97e36/w:1280/p:16x9/Por%20Josemar%20Afrovulto.jpg",
+        "caption": "José Falero em entrevista sobre a edição francesa de Os Supridores — Fonte: RFI"
+    },
+    {
+        "src": "https://revistaopera.operamundi.uol.com.br/wp-content/uploads/2021/08/pera-16.jpeg",
+        "caption": "José Falero, ex-supridor e escritor — Fonte: Revista Opera"
+    }
+];
+  const MAX_W = 1280;
+  const stage = document.getElementById('stage');
+  const dotsBox = document.getElementById('dots');
+  const cap = document.getElementById('cap');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const imgEls = [];
+  let current = 0;
+  function resolve(src) {
+    return src.includes('Special:FilePath')
+      ? src + (src.includes('?') ? '&' : '?') + 'width=' + MAX_W
+      : src;
+  }
+  function load(i) {
+    if (i < 0 || i >= images.length) return;
+    const el = imgEls[i];
+    if (el && !el.dataset.loaded) { el.dataset.loaded = '1'; el.src = resolve(images[i].src); }
+  }
+  function preloadNeighbors() {
+    requestAnimationFrame(() => { load(current + 1); load(current - 1); });
+  }
+  function build() {
+    images.forEach((item, i) => {
+      const img = document.createElement('img');
+      img.alt = item.caption || '';
+      img.decoding = 'async';
+      stage.insertBefore(img, prev);
+      imgEls[i] = img;
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      dot.onclick = () => { current = i; update(); };
+      dotsBox.appendChild(dot);
+    });
+  }
+  function update() {
+    load(current);
+    const cur = imgEls[current];
+    if (cur.complete) { stage.classList.remove('loading'); preloadNeighbors(); }
+    else {
+      stage.classList.add('loading');
+      cur.onload = () => { stage.classList.remove('loading'); preloadNeighbors(); };
+      cur.onerror = () => stage.classList.remove('loading');
+    }
+    imgEls.forEach((el, i) => el.classList.toggle('active', i === current));
+    [...dotsBox.children].forEach((d, i) => d.classList.toggle('active', i === current));
+    const multi = images.length > 1;
+    prev.style.display = multi ? 'block' : 'none';
+    next.style.display = multi ? 'block' : 'none';
+    cap.textContent = images[current] ? images[current].caption : '';
+    cap.style.display = cap.textContent ? 'block' : 'none';
+  }
+  function go(s) { current = (current + s + images.length) % images.length; update(); }
+  prev.onclick = () => go(-1);
+  next.onclick = () => go(1);
+  document.addEventListener('keydown', e => { if (e.key==='ArrowLeft') go(-1); if (e.key==='ArrowRight') go(1); });
+  build();
+  update();
+</script>
+</body>
+</html>
