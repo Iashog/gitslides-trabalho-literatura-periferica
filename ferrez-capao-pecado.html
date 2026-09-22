@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Capão Pecado — carrossel</title>
+<style>
+:root{--stage-bg:#2d2d2d;--slide-bg:#f5f3ee;--ink:#1a1a1a;--muted:#6b6760;--accent:#46A171;--paper:#faf9f7}
+*{box-sizing:border-box} html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--stage-bg);font-family:Georgia,'Times New Roman',serif;color:var(--ink)}
+.deck-viewport{position:fixed;inset:0;overflow:hidden;background:var(--stage-bg)}.deck-stage{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;transform-origin:0 0;background:var(--slide-bg)}.slide{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;visibility:hidden;opacity:0;pointer-events:none;background:var(--slide-bg)}.slide.active,.slide.visible{visibility:visible;opacity:1;pointer-events:auto;z-index:1}img{max-width:100%;max-height:100%}.deck-controls{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:1000}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}}
+.slide::before{content:"";position:absolute;inset:48px;border:2px solid #e3ded2}.slide::after{content:"";position:absolute;width:420px;height:420px;border:3px solid var(--accent);border-radius:50%;right:28px;top:28px;opacity:.16}.paper{position:absolute;inset:88px 110px;background:var(--paper);box-shadow:0 10px 40px rgba(0,0,0,.12);padding:72px}.paper::before{content:"";position:absolute;left:42px;top:54px;bottom:54px;width:3px;background:var(--accent)}.meta{font-family:Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;font-size:22px;color:var(--muted);margin-left:32px}.grid{display:grid;grid-template-columns:860px 1fr;gap:72px;height:780px;align-items:center}.imagebox{height:690px;margin:0;border:1px solid #ded8cb;background:#fff;display:flex;align-items:center;justify-content:center;padding:28px;overflow:hidden}.imagebox img{width:100%;height:100%;object-fit:contain;filter:saturate(.95) contrast(1.02)}.copy{align-self:center}.kicker{font-family:Arial,sans-serif;font-size:30px;line-height:1.35;color:var(--muted);margin:0 0 36px}.copy h1{font-size:78px;line-height:.98;margin:0 0 42px;letter-spacing:-.035em;font-weight:700}.caption{font-family:Arial,sans-serif;font-size:24px;line-height:1.35;color:var(--muted)}a{color:var(--accent);text-decoration:none}.controls{position:fixed;z-index:9;left:50%;bottom:24px;transform:translateX(-50%);display:flex;gap:10px;align-items:center;background:rgba(45,45,45,.88);padding:10px 14px;border-radius:999px;font-family:Arial,sans-serif}.controls button{width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:#1a1a1a;font-size:24px;cursor:pointer}.counter{color:#fff;font-size:16px;min-width:58px;text-align:center}@media(max-width:800px){.controls{bottom:12px}}
+</style></head><body><div class="deck-viewport"><main class="deck-stage" id="deckStage">
+<section class="slide active visible">
+  <div class="paper">
+    <div class="meta">01 / 4 · Ferréz · Capão Pecado</div>
+    <div class="grid">
+      <figure class="imagebox"><img src="https://i.ytimg.com/vi/yYVUSSFZQUE/maxresdefault.jpg" alt="Lançamento da reedição de Capão Pecado"></figure>
+      <div class="copy">
+        <p class="kicker">Trampo, correria e alternativas reais de sobrevivência.</p>
+        <h1>Lançamento da reedição de Capão Pecado</h1>
+        <p class="caption">Fonte: <a href="https://www.youtube.com/watch?v=yYVUSSFZQUE" target="_blank" rel="noopener">YouTube</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide ">
+  <div class="paper">
+    <div class="meta">02 / 4 · Ferréz · Capão Pecado</div>
+    <div class="grid">
+      <figure class="imagebox"><img src="https://static.wixstatic.com/media/5801fd_10a34a3433bc4d9fbc60a6fac294fd71~mv2_d_1706_2560_s_2.jpg/v1/fill/w_666,h_1000,al_c,q_85,usm_0.66_1.00_0.01/5801fd_10a34a3433bc4d9fbc60a6fac294fd71~mv2_d_1706_2560_s_2.jpg" alt="Capão Pecado em resenha literária"></figure>
+      <div class="copy">
+        <p class="kicker">Trampo, correria e alternativas reais de sobrevivência.</p>
+        <h1>Capão Pecado em resenha literária</h1>
+        <p class="caption">Fonte: <a href="https://www.bonashistorias.com.br/single-post/2019/12/11/livros-capao-pecado-a-literatura-marginal-de-ferrez" target="_blank" rel="noopener">Bonas Histórias</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide ">
+  <div class="paper">
+    <div class="meta">03 / 4 · Ferréz · Capão Pecado</div>
+    <div class="grid">
+      <figure class="imagebox"><img src="https://rascunho.com.br/wp-content/uploads/2020/11/ferrez.jpg" alt="Ferréz na nova edição de Capão Pecado"></figure>
+      <div class="copy">
+        <p class="kicker">Trampo, correria e alternativas reais de sobrevivência.</p>
+        <h1>Ferréz na nova edição de Capão Pecado</h1>
+        <p class="caption">Fonte: <a href="https://rascunho.com.br/noticias/capao-pecado-completa-20-anos-e-ganha-nova-edicao/" target="_blank" rel="noopener">Rascunho</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide ">
+  <div class="paper">
+    <div class="meta">04 / 4 · Ferréz · Capão Pecado</div>
+    <div class="grid">
+      <figure class="imagebox"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Feira_de_Frankfurt_2013_%2810276733426%29.jpg" alt="Ferréz em registro público de autor"></figure>
+      <div class="copy">
+        <p class="kicker">Trampo, correria e alternativas reais de sobrevivência.</p>
+        <h1>Ferréz em registro público de autor</h1>
+        <p class="caption">Fonte: <a href="https://commons.wikimedia.org/wiki/File:Feira_de_Frankfurt_2013_(10276733426).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></p>
+      </div>
+    </div>
+  </div>
+</section></main></div><nav class="controls" aria-label="Navegação dos slides"><button id="prev" aria-label="Slide anterior">‹</button><span class="counter" id="counter">1/4</span><button id="next" aria-label="Próximo slide">›</button></nav>
+<script>
+class SlidePresentation{constructor(){this.slides=[...document.querySelectorAll('.slide')];this.i=0;this.stage=document.getElementById('deckStage');this.counter=document.getElementById('counter');this.scale();addEventListener('resize',()=>this.scale());document.getElementById('prev').onclick=()=>this.go(this.i-1);document.getElementById('next').onclick=()=>this.go(this.i+1);document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();this.go(this.i+1)} if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();this.go(this.i-1)}});let sx=0;document.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});document.addEventListener('touchend',e=>{let dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>60)this.go(this.i+(dx<0?1:-1))},{passive:true});const start=new URLSearchParams(location.search).get('slide');this.go(start?Number(start)-1:0)}scale(){const f=Math.min(innerWidth/1920,innerHeight/1080);const x=(innerWidth-1920*f)/2;const y=(innerHeight-1080*f)/2;this.stage.style.transform=`translate(${x}px,${y}px) scale(${f})`}go(n){this.i=(n+this.slides.length)%this.slides.length;this.slides.forEach((s,k)=>{s.classList.toggle('active',k===this.i);s.classList.toggle('visible',k===this.i)});this.counter.textContent=(this.i+1)+'/'+this.slides.length}}
+new SlidePresentation();
+</script></body></html>
